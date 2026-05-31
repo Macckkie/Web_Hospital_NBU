@@ -123,14 +123,14 @@ INSERT INTO `director_info` (`first_name`, `last_name`, `phone`, `email`) VALUES
 -- Създаване на потребители за вход в системата (паролите са криптирани с password_hash('password123', PASSWORD_DEFAULT))
 -- 'admin123', 'director123', 'doctor123', 'doctor456', 'nurse123', 'maint123', 'patient123', 'patient456'
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', '$2y$10$Y1s4C5jZ/NpxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'admin'),
-(2, 'director', '$2y$10$vU8Hq4V9l2T19s6TzTqIxe2WdJ4GZtJ/R.t/V7w7Z1d2X.qL.gSJy', 'director'),
-(3, 'dr.ivanov', '$2y$10$tZ3s7jZ9nPxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'doctor'),
-(4, 'dr.petrova', '$2y$10$tZ3s7jZ9nPxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'doctor'),
-(5, 'nurse.stoyanova', '$2y$10$tZ3s7jZ9nPxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'nurse'),
-(6, 'maint.petrov', '$2y$10$tZ3s7jZ9nPxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'maintenance'),
-(7, 'patient.dimitrov', '$2y$10$tZ3s7jZ9nPxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'patient'),
-(8, 'patient.georgieva', '$2y$10$tZ3s7jZ9nPxXhU/TvxVSeYkGfR4wUo.x6fO7xW4y7D5d3fX.oD7C', 'patient');
+(1, 'admin', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'admin'),
+(2, 'director', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'director'),
+(3, 'dr.ivanov', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'doctor'),
+(4, 'dr.petrova', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'doctor'),
+(5, 'nurse.stoyanova', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'nurse'),
+(6, 'maint.petrov', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'maintenance'),
+(7, 'patient.dimitrov', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'patient'),
+(8, 'patient.georgieva', '$2y$10$tZdYIgp6FPbh.CvpKyw5Aufr7.zoYVDEDoG77Id7hZwEtTGIdTgwK', 'patient');
 
 -- Въвеждане на стаи
 INSERT INTO `rooms` (`id`, `room_number`, `type`, `capacity`, `price_per_day`) VALUES
