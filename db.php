@@ -50,6 +50,20 @@ try {
         $tableCheck = $pdo->query("SHOW TABLES LIKE 'users'");
         if (!$tableCheck->fetch()) {
             $needInit = true;
+        } else {
+            // Самолекуващ се механизъм за паролите: ако съществува стара парола, я обновяваме автоматично на 'password123' за всички потребители
+            try {
+                $testStmt = $pdo->prepare("SELECT password FROM users WHERE username = 'admin'");
+                $testStmt->execute();
+                $adminHash = $testStmt->fetchColumn();
+                
+                if ($adminHash && !password_verify('password123', $adminHash)) {
+                    $newHash = password_hash('password123', PASSWORD_DEFAULT);
+                    $pdo->prepare("UPDATE users SET password = ?")->execute([$newHash]);
+                }
+            } catch (Exception $ex) {
+                $needInit = true;
+            }
         }
     }
 
