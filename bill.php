@@ -128,14 +128,14 @@ try {
                 <tr>
                     <td>Престой в болнична стая №<?php echo htmlspecialchars($patient['room_number']); ?> (<?php echo $patient['room_type'] === 'icu' ? 'Интензивно отделение' : 'Обикновен престой'; ?>)</td>
                     <td style="text-align:center;"><?php echo $days; ?></td>
-                    <td style="text-align:right;"><?php echo number_format($roomRate, 2); ?> лв.</td>
-                    <td style="text-align:right; font-weight:600;"><?php echo number_format($roomSubtotal, 2); ?> лв.</td>
+                    <td style="text-align:right;"><?php echo number_format($roomRate, 2); ?> eur.</td>
+                    <td style="text-align:right; font-weight:600;"><?php echo number_format($roomSubtotal, 2); ?> eur.</td>
                 </tr>
                 <tr>
                     <td>Разходи за проведено медикаментозно, оперативно и клинично лечение по диагноза</td>
                     <td style="text-align:center;">1</td>
-                    <td style="text-align:right;"><?php echo number_format($treatmentCost, 2); ?> лв.</td>
-                    <td style="text-align:right; font-weight:600;"><?php echo number_format($treatmentCost, 2); ?> лв.</td>
+                    <td style="text-align:right;"><?php echo number_format($treatmentCost, 2); ?> eur.</td>
+                    <td style="text-align:right; font-weight:600;"><?php echo number_format($treatmentCost, 2); ?> eur.</td>
                 </tr>
             </tbody>
         </table>
@@ -144,15 +144,15 @@ try {
             <div class="bill-total-box">
                 <div class="bill-total-row">
                     <span>Междинна сума:</span>
-                    <span><?php echo number_format($totalBill, 2); ?> лв.</span>
+                    <span><?php echo number_format($totalBill, 2); ?> eur.</span>
                 </div>
                 <div class="bill-total-row">
                     <span>ДДС (0% за здравни услуги):</span>
-                    <span>0.00 лв.</span>
+                    <span>0.00 eur.</span>
                 </div>
                 <div class="bill-total-row grand-total">
                     <span>ОБЩО ДЪЛЖИМО:</span>
-                    <span><?php echo number_format($totalBill, 2); ?> лв.</span>
+                    <span><?php echo number_format($totalBill, 2); ?> eur.</span>
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@ try {
             </div>
             <div>
                 <p>Пациент: .......................................</p>
-                <p style="font-size:10px; margin-top:4px;">(Георги Димитров - потвърдил престоя)</p>
+                <p style="font-size:10px; margin-top:4px;">(<?php echo htmlspecialchars($patient['first_name'] . ' ' . $patient['last_name']); ?>- потвърдил престоя)</p>
             </div>
         </div>
     </div>
