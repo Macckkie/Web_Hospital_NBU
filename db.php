@@ -1,19 +1,37 @@
 <?php
-// db.php - Връзка с базата данни с автоматична инициализация на схемата и демо данните
+// db.php - Връзка с базата данни с динамично засичане на порта (3310 или 3306) и авто-инициализация
 
 $host = '127.0.0.1';
-$port = '3310'; // Портът за MySQL в тази XAMPP инсталация
 $user = 'root';
 $pass = '';
 $dbname = 'hospital_db';
 
-try {
-    // 1. Първоначална връзка към MySQL без селектирана база данни
-    $pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $user, $pass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+$ports = ['3310', '3306'];
+$connected = false;
+$pdo = null;
+$lastError = '';
 
+foreach ($ports as $port) {
+    try {
+        // Първоначална връзка към MySQL без селектирана база данни
+        $pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
+        $connected = true;
+        break; // Успешно свързване, прекъсваме цикъла
+    } catch (PDOException $e) {
+        $lastError = $e->getMessage();
+    }
+}
+
+if (!$connected) {
+    die("<div style='font-family: sans-serif; padding: 20px; background: #fee2e2; color: #991b1b; border-radius: 8px; margin: 20px;'>
+            <strong>Грешка при връзка с базата данни (опитани портове 3310 и 3306):</strong> " . htmlspecialchars($lastError) . "
+         </div>");
+}
+
+try {
     // 2. Проверка дали базата данни съществува
     $stmt = $pdo->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$dbname'");
     $dbExists = $stmt->fetch();
@@ -36,13 +54,9 @@ try {
         $pdo->exec("USE `$dbname`");
     }
 
-} catch (PDOException $e) {
-    die("<div style='font-family: sans-serif; padding: 20px; background: #fee2e2; color: #991b1b; border-radius: 8px; margin: 20px;'>
-            <strong>Грешка при връзка с базата данни:</strong> " . htmlspecialchars($e->getMessage()) . "
-         </div>");
 } catch (Exception $e) {
     die("<div style='font-family: sans-serif; padding: 20px; background: #fee2e2; color: #991b1b; border-radius: 8px; margin: 20px;'>
-            <strong>Системна грешка:</strong> " . htmlspecialchars($e->getMessage()) . "
+            <strong>Системна грешка при инициализация:</strong> " . htmlspecialchars($e->getMessage()) . "
          </div>");
 }
 ?>
