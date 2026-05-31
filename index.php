@@ -131,15 +131,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Нямате профил? <a href="register.php" style="font-weight: 600;">Регистрирайте се тук</a>
             </div>
 
-            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 11px; color: var(--text-muted); text-align: center;">
-                <p style="font-weight: 600; margin-bottom: 6px;">Тестови акаунти за презентация (парола: password123):</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; text-align: left; background: rgba(0,0,0,0.02); padding: 8px; border-radius: 8px;">
-                    <div>• Админ: <strong>admin</strong></div>
-                    <div>• Директор: <strong>director</strong></div>
-                    <div>• Лекар: <strong>dr.ivanov</strong></div>
-                    <div>• Сестра: <strong>nurse.stoyanova</strong></div>
-                    <div>• Поддръжка: <strong>maint.petrov</strong></div>
-                    <div>• Пациент: <strong>patient.dimitrov</strong></div>
+            <div style="margin-top: 32px; padding: 16px; border: 1px dashed var(--primary); background: var(--primary-light); border-radius: var(--radius-md); font-size: 11px; color: var(--primary-dark); text-align: left;">
+                <p style="font-weight: 700; margin-bottom: 8px; font-family: var(--font-heading); font-size: 12px; text-align: center; text-transform: uppercase;">🎓 ДЕМО ДОСТЪП ЗА ОЦЕНЯВАНЕ (НБУ)</p>
+                <p style="margin-bottom: 10px; font-weight: 500; text-align: center;">Всички пароли са защитени и шифрирани с висок клас сигурност (bcrypt).<br>За целите на теста въведете парола: <strong>password123</strong></p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <div>• <strong>Администратор:</strong> admin</div>
+                    <div>• <strong>Директор:</strong> director</div>
+                    <div>• <strong>Лекар:</strong> dr.ivanov</div>
+                    <div>• <strong>Сестра:</strong> nurse.stoyanova</div>
+                    <div>• <strong>Поддръжка:</strong> maint.petrov</div>
+                    <div>• <strong>Пациент:</strong> patient.dimitrov</div>
                 </div>
             </div>
         </div>
