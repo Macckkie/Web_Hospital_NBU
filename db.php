@@ -36,11 +36,24 @@ try {
     $stmt = $pdo->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$dbname'");
     $dbExists = $stmt->fetch();
 
+    $needInit = false;
+
     if (!$dbExists) {
-        // Базата данни липсва - създаваме я и изпълняваме schema.sql
+        // Базата данни липсва - създаваме я
         $pdo->exec("CREATE DATABASE `$dbname` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
         $pdo->exec("USE `$dbname`");
-        
+        $needInit = true;
+    } else {
+        // Базата данни съществува - селектираме я
+        $pdo->exec("USE `$dbname`");
+        // Проверяваме дали таблицата 'users' съществува
+        $tableCheck = $pdo->query("SHOW TABLES LIKE 'users'");
+        if (!$tableCheck->fetch()) {
+            $needInit = true;
+        }
+    }
+
+    if ($needInit) {
         $sqlPath = __DIR__ . '/schema.sql';
         if (file_exists($sqlPath)) {
             $sql = file_get_contents($sqlPath);
@@ -49,9 +62,6 @@ try {
         } else {
             throw new Exception("Файлът schema.sql не бе намерен за инициализация.");
         }
-    } else {
-        // Базата данни съществува - селектираме я за работа
-        $pdo->exec("USE `$dbname`");
     }
 
 } catch (Exception $e) {
