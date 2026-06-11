@@ -1,4 +1,4 @@
-/* style.css - Премиум дизайн система за Web_Hospital_NBU */
+/* css/style.css - Премиум дизайн система за Web_Hospital_NBU */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;850&display=swap');
 
@@ -366,11 +366,13 @@ a:hover {
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
-    border-radius: var(--radius-sm);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    border-left: 4px solid transparent;
     color: #94a3b8;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .sidebar-link:hover, .sidebar-link.active {

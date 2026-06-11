@@ -34,7 +34,7 @@
                             <td><strong><?php echo htmlspecialchars($p['unique_patient_number']); ?></strong></td>
                             <td><strong><?php echo htmlspecialchars($p['first_name'] . ' ' . $p['last_name']); ?></strong><br><?php echo htmlspecialchars($p['phone']); ?></td>
                             <td><?php echo htmlspecialchars($p['illness']); ?><br><span style="font-size:12px; color:var(--text-muted);"><?php echo htmlspecialchars($p['treatment']); ?></span></td>
-                            <td>👨‍⚕️ <?php echo htmlspecialchars($p['doc_first'] . ' ' . $p['doc_last']); ?></td>
+                            <td><?php echo htmlspecialchars($p['doc_first'] . ' ' . $p['doc_last']); ?></td>
                             <td>Стая №<?php echo htmlspecialchars($p['room_number']); ?></td>
                             <td><?php echo $p['admission_date']; ?></td>
                             <td>
@@ -75,11 +75,11 @@
                 <?php else: ?>
                     <?php foreach ($data['dept_shifts'] as $s): ?>
                         <tr>
-                            <td><strong>👨‍⚕️ <?php echo htmlspecialchars($s['first_name'] . ' ' . $s['last_name']); ?></strong></td>
+                            <td><strong><?php echo htmlspecialchars($s['first_name'] . ' ' . $s['last_name']); ?></strong></td>
                             <td><?php echo $s['shift_date']; ?></td>
                             <td>
                                 <?php 
-                                $sh = ['morning'=>'🌅 Сутрешна смяна', 'afternoon'=>'🌇 Следобедна', 'night'=>'🌃 Нощна'];
+                                $sh = ['morning'=>'Сутрешна смяна', 'afternoon'=>'Следобедна', 'night'=>'Нощна'];
                                 echo $sh[$s['shift_type']] ?? $s['shift_type'];
                                 ?>
                             </td>

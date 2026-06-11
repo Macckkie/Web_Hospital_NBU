@@ -1,5 +1,5 @@
 <?php
-// db.php - Връзка с базата данни с динамично засичане на порта (3310 или 3306) и авто-инициализация
+// config/db.php - Връзка с базата данни с динамично засичане на порта и авто-инициализация
 
 $host = '127.0.0.1';
 $user = 'root';
@@ -68,7 +68,7 @@ try {
     }
 
     if ($needInit) {
-        $sqlPath = __DIR__ . '/schema.sql';
+        $sqlPath = __DIR__ . '/../sql/schema.sql';
         if (file_exists($sqlPath)) {
             $sql = file_get_contents($sqlPath);
             // Изпълняваме целия SQL скрипт наведнъж

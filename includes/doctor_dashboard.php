@@ -83,7 +83,7 @@
                                 <td style="text-align:right;">
                                     <div style="display:inline-flex; gap:6px;">
                                         <?php if ($p['status'] === 'admitted'): ?>
-                                            <form action="actions.php" method="POST">
+                                            <form action="../core/actions/patient_actions.php" method="POST">
                                                 <input type="hidden" name="action" value="cure_patient">
                                                 <input type="hidden" name="patient_id" value="<?php echo $p['id']; ?>">
                                                 <button type="submit" class="btn btn-accent btn-sm" title="Отбележи като излекуван">✓</button>
@@ -91,7 +91,7 @@
                                         <?php endif; ?>
                                         <a href="bill.php?patient_id=<?php echo $p['id']; ?>" class="btn btn-secondary btn-sm" title="Сметка за лечение" target="_blank">🧾</a>
                                         <button class="btn btn-secondary btn-sm" onclick="openEditPatient(<?php echo htmlspecialchars(json_encode($p)); ?>)">✏️</button>
-                                        <form action="actions.php" method="POST" onsubmit="return confirm('Изтриване на пациента?')">
+                                        <form action="../core/actions/patient_actions.php" method="POST" onsubmit="return confirm('Изтриване на пациента?')">
                                             <input type="hidden" name="action" value="delete_patient">
                                             <input type="hidden" name="patient_id" value="<?php echo $p['id']; ?>">
                                             <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -134,7 +134,7 @@
                             <td><strong><?php echo $s['shift_date']; ?></strong></td>
                             <td>
                                 <?php 
-                                $shL = ['morning' => '🌅 Сутрешна смяна (06:00 - 14:00)', 'afternoon' => '🌇 Следобедна смяна (14:00 - 22:00)', 'night' => '🌃 Нощно дежурство (22:00 - 06:00)'];
+                                $shL = ['morning' => 'Сутрешна смяна (06:00 - 14:00)', 'afternoon' => 'Следобедна смяна (14:00 - 22:00)', 'night' => 'Нощно дежурство (22:00 - 06:00)'];
                                 echo $shL[$s['shift_type']] ?? $s['shift_type'];
                                 ?>
                             </td>

@@ -61,6 +61,37 @@
             <div class="stats-icon warning">👥</div>
         </div>
     </div>
+
+    <!-- Дневник на дейностите -->
+    <div class="card-table-wrap" style="margin-top: 30px;">
+        <h3 class="chart-title" style="padding: 20px 20px 0;">📋 Последни действия в системата (Дневник)</h3>
+        <div class="table-responsive">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Време</th>
+                        <th>Потребител</th>
+                        <th>Действие</th>
+                        <th>Детайли</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($data['activity_logs'])): ?>
+                        <?php foreach($data['activity_logs'] as $log): ?>
+                        <tr>
+                            <td><span class="badge badge-info"><?php echo date('d.m.Y H:i', strtotime($log['created_at'])); ?></span></td>
+                            <td><strong><?php echo htmlspecialchars($log['username'] ?? 'Система'); ?></strong></td>
+                            <td><?php echo htmlspecialchars($log['action']); ?></td>
+                            <td><small><?php echo htmlspecialchars($log['details'] ?? '-'); ?></small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="4" class="text-center">Няма записани действия.</td></tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
 
 <!-- Таб: Всички Пациенти -->
@@ -160,7 +191,7 @@
                 <?php foreach($data['departments'] as $d): ?>
                     <tr>
                         <td><strong><?php echo htmlspecialchars($d['name']); ?></strong></td>
-                        <td>👨‍⚕️ <?php echo $d['head_doctor_id'] ? htmlspecialchars($d['doc_first'] . ' ' . $d['doc_last']) : '<span style="color:var(--text-muted);">Не е назначен</span>'; ?></td>
+                        <td><?php echo $d['head_doctor_id'] ? htmlspecialchars($d['doc_first'] . ' ' . $d['doc_last']) : '<span style="color:var(--text-muted);">Не е назначен</span>'; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

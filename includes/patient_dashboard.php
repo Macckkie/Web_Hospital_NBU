@@ -64,7 +64,7 @@
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; border-top:1px solid var(--border-color); padding-top:20px;">
                     <div>
                         <p style="font-size:12px; color:var(--text-muted);">Лекуващ лекар</p>
-                        <p style="font-weight:600; color:var(--primary);">👨‍⚕️ <?php echo htmlspecialchars($p['doc_first'] . ' ' . $p['doc_last']); ?></p>
+                        <p style="font-weight:600; color:var(--primary);"><?php echo htmlspecialchars($p['doc_first'] . ' ' . $p['doc_last']); ?></p>
                         <p style="font-size:11px; color:var(--text-muted);">Контакт: <?php echo htmlspecialchars($p['doc_phone']); ?></p>
                     </div>
                     <div>
@@ -77,7 +77,7 @@
 
             <!-- Сметка / Финансова информация -->
             <div class="chart-card" style="align-self:start;">
-                <h3 class="chart-title">🧾 Сметка за лечение</h3>
+                <h3 class="chart-title">Сметка за лечение</h3>
                 <div style="background:var(--primary-light); color:var(--primary-dark); padding:20px; border-radius:12px; text-align:center; margin-bottom:20px;">
                     <span style="font-size:13px; font-weight:600; text-transform:uppercase;">Дължима сума</span>
                     <h2 style="font-size:32px; font-weight:800; font-family:var(--font-heading); margin-top:4px;"><?php echo number_format($totalBill, 2); ?> лв.</h2>

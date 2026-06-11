@@ -1,11 +1,12 @@
 <?php
 // bill.php - Генератор на фактури и сметки за лечение за Web_Hospital_NBU
 session_start();
-require_once 'db.php';
+require_once '../config/db.php';
 
 // Проверка дали потребителят е влязъл
+/** @var PDO $pdo */
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: ../auth/login.php");
     exit();
 }
 
@@ -58,7 +59,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фактура - <?php echo htmlspecialchars($patient['first_name'] . ' ' . $patient['last_name']); ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         body {
             background-color: #f1f5f9;
@@ -67,7 +68,7 @@ try {
     </style>
 </head>
 <body>
-    <div style="max-width: 800px; margin: 0 auto; margin-bottom: 24px;" class="main-content">
+    <div style="max-width: 800px; margin: 0 auto; margin-bottom: 24px;">
         <div style="display:flex; justify-content:space-between; align-items:center;">
             <a href="dashboard.php" class="btn btn-secondary">← Обратно към Таблото</a>
             <button class="btn btn-primary" onclick="window.print()">🖨️ Разпечатай Сметката</button>

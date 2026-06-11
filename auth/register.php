@@ -1,7 +1,8 @@
 <?php
 // register.php - Страница за регистрация в системата за Web_Hospital_NBU
 session_start();
-require_once 'db.php';
+require_once '../config/db.php';
+/** @var PDO $pdo */
 
 $error = '';
 $success = '';
@@ -99,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация - Система за управление на болница</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="auth-wrapper">
@@ -121,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span>✅ <?php echo htmlspecialchars($success); ?></span>
                 </div>
                 <div style="text-align: center; margin-top: 16px;">
-                    <a href="index.php" class="btn btn-primary">Към вход</a>
+                    <a href="login.php" class="btn btn-primary">Към вход</a>
                 </div>
             <?php else: ?>
                 <form action="register.php" method="POST">
@@ -174,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
 
                 <div style="text-align: center; font-size: 14px; color: var(--text-muted);">
-                    Вече имате профил? <a href="index.php" style="font-weight: 600;">Влезте оттук</a>
+                    Вече имате профил? <a href="login.php" style="font-weight: 600;">Влезте оттук</a>
                 </div>
             <?php endif; ?>
         </div>

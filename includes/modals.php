@@ -9,7 +9,7 @@
             <h3 class="modal-title">🏥 Регистриране на нов пациент</h3>
             <button class="modal-close" onclick="closeModal('addPatientModal')">&times;</button>
         </div>
-        <form action="actions.php" method="POST">
+        <form action="../core/actions/patient_actions.php" method="POST">
             <div class="modal-body">
                 <input type="hidden" name="action" value="add_patient">
                 
@@ -78,7 +78,7 @@
                             <select name="doctor_id" class="form-control">
                                 <option value="">Изберете лекар</option>
                                 <?php foreach ($data['doctors'] as $d): ?>
-                                    <option value="<?php echo $d['id']; ?>">👨‍⚕️ <?php echo htmlspecialchars($d['first_name'] . ' ' . $d['last_name']); ?></option>
+                                    <option value="<?php echo $d['id']; ?>"><?php echo htmlspecialchars($d['first_name'] . ' ' . $d['last_name']); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -118,7 +118,7 @@
             <h3 class="modal-title">✏️ Редактиране на картон на пациент</h3>
             <button class="modal-close" onclick="closeModal('editPatientModal')">&times;</button>
         </div>
-        <form action="actions.php" method="POST">
+        <form action="../core/actions/patient_actions.php" method="POST">
             <div class="modal-body">
                 <input type="hidden" name="action" value="edit_patient">
                 <input type="hidden" name="patient_id" id="edit_pat_id">
@@ -185,7 +185,7 @@
                             <select name="doctor_id" id="edit_pat_doc" class="form-control">
                                 <option value="">Изберете лекар</option>
                                 <?php foreach ($data['doctors'] as $d): ?>
-                                    <option value="<?php echo $d['id']; ?>">👨‍⚕️ <?php echo htmlspecialchars($d['first_name'] . ' ' . $d['last_name']); ?></option>
+                                    <option value="<?php echo $d['id']; ?>"><?php echo htmlspecialchars($d['first_name'] . ' ' . $d['last_name']); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -213,7 +213,7 @@
                 <h3 class="modal-title">🩺 Добавяне на лекар</h3>
                 <button class="modal-close" onclick="closeModal('addDoctorModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/doctor_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="add_doctor">
                     <div class="form-row">
@@ -278,7 +278,7 @@
                 <h3 class="modal-title">✏️ Редактиране на лекар</h3>
                 <button class="modal-close" onclick="closeModal('editDoctorModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/doctor_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="edit_doctor">
                     <input type="hidden" name="doctor_id" id="edit_doc_id">
@@ -331,7 +331,7 @@
                 <h3 class="modal-title">🚪 Нова Стая</h3>
                 <button class="modal-close" onclick="closeModal('addRoomModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/room_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="add_room">
                     <div class="form-group">
@@ -372,7 +372,7 @@
                 <h3 class="modal-title">🚪 Редактиране на стая</h3>
                 <button class="modal-close" onclick="closeModal('editRoomModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/room_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="edit_room">
                     <input type="hidden" name="room_id" id="edit_room_id">
@@ -414,7 +414,7 @@
                 <h3 class="modal-title">🏢 Ново Отделение</h3>
                 <button class="modal-close" onclick="closeModal('addDeptModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/department_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="add_department">
                     <div class="form-group">
@@ -446,7 +446,7 @@
                 <h3 class="modal-title">✏️ Редактиране на отделение</h3>
                 <button class="modal-close" onclick="closeModal('editDeptModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/department_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="edit_department">
                     <input type="hidden" name="department_id" id="edit_dept_id">
@@ -479,7 +479,7 @@
                 <h3 class="modal-title">👔 Нов служител</h3>
                 <button class="modal-close" onclick="closeModal('addStaffModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/staff_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="add_staff">
                     <div class="form-row">
@@ -543,7 +543,7 @@
                 <h3 class="modal-title">✏️ Редактиране на служител</h3>
                 <button class="modal-close" onclick="closeModal('editStaffModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/staff_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="edit_staff">
                     <input type="hidden" name="staff_id" id="edit_staff_id">
@@ -588,7 +588,7 @@
                 <h3 class="modal-title">📅 Ново Дежурство</h3>
                 <button class="modal-close" onclick="closeModal('addShiftModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/shift_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="add_shift">
                     <div class="form-group">
@@ -596,7 +596,7 @@
                         <select name="doctor_id" class="form-control" required>
                             <option value="">Изберете лекар</option>
                             <?php foreach($data['doctors'] as $d): ?>
-                                <option value="<?php echo $d['id']; ?>">👨‍⚕️ <?php echo htmlspecialchars($d['first_name'] . ' ' . $d['last_name']); ?></option>
+                                <option value="<?php echo $d['id']; ?>"><?php echo htmlspecialchars($d['first_name'] . ' ' . $d['last_name']); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -628,7 +628,7 @@
                 <h3 class="modal-title">🔑 Нов потребител</h3>
                 <button class="modal-close" onclick="closeModal('addUserModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/user_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="add_user">
                     <div class="form-group">
@@ -666,7 +666,7 @@
                 <h3 class="modal-title">✏️ Редактиране на потребителски акаунт</h3>
                 <button class="modal-close" onclick="closeModal('editUserModal')">&times;</button>
             </div>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/user_actions.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="edit_user">
                     <input type="hidden" name="user_id" id="edit_user_id">

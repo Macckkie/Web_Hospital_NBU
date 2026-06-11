@@ -86,6 +86,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Дневник на дейностите -->
+    <div class="card-table-wrap" style="margin-top: 30px;">
+        <h3 class="chart-title" style="padding: 20px 20px 0;">📋 Последни действия в системата (Дневник)</h3>
+        <div class="table-responsive">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Време</th>
+                        <th>Потребител</th>
+                        <th>Действие</th>
+                        <th>Детайли</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($data['activity_logs'])): ?>
+                        <?php foreach($data['activity_logs'] as $log): ?>
+                        <tr>
+                            <td><span class="badge badge-info"><?php echo date('d.m.Y H:i', strtotime($log['created_at'])); ?></span></td>
+                            <td><strong><?php echo htmlspecialchars($log['username'] ?? 'Система'); ?></strong></td>
+                            <td><?php echo htmlspecialchars($log['action']); ?></td>
+                            <td><small><?php echo htmlspecialchars($log['details'] ?? '-'); ?></small></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="4" class="text-center">Няма записани действия.</td></tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
 
 <!-- Таб: Пациенти -->
@@ -143,7 +174,7 @@
                             <td style="text-align:right;">
                                 <div style="display:inline-flex; gap:6px;">
                                     <?php if ($p['status'] === 'admitted'): ?>
-                                        <form action="actions.php" method="POST">
+                                        <form action="../core/actions/patient_actions.php" method="POST">
                                             <input type="hidden" name="action" value="cure_patient">
                                             <input type="hidden" name="patient_id" value="<?php echo $p['id']; ?>">
                                             <button type="submit" class="btn btn-accent btn-sm" title="Маркирай като излекуван">✓</button>
@@ -154,7 +185,7 @@
                                     
                                     <button class="btn btn-secondary btn-sm" onclick="openEditPatient(<?php echo htmlspecialchars(json_encode($p)); ?>)">✏️</button>
                                     
-                                    <form action="actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да изтриете картона на пациента?')">
+                                    <form action="../core/actions/patient_actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да изтриете картона на пациента?')">
                                         <input type="hidden" name="action" value="delete_patient">
                                         <input type="hidden" name="patient_id" value="<?php echo $p['id']; ?>">
                                         <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -204,7 +235,7 @@
                         <td style="text-align:right;">
                             <div style="display:inline-flex; gap:6px;">
                                 <button class="btn btn-secondary btn-sm" onclick="openEditDoctor(<?php echo htmlspecialchars(json_encode($d)); ?>)">✏️</button>
-                                <form action="actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да изтриете лекаря? Всички негови дежурства ще бъдат изтрити!')">
+                                <form action="../core/actions/doctor_actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да изтриете лекаря? Всички негови дежурства ще бъдат изтрити!')">
                                     <input type="hidden" name="action" value="delete_doctor">
                                     <input type="hidden" name="doctor_id" value="<?php echo $d['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -255,7 +286,7 @@
                         <td style="text-align:right;">
                             <div style="display:inline-flex; gap:6px;">
                                 <button class="btn btn-secondary btn-sm" onclick="openEditStaff(<?php echo htmlspecialchars(json_encode($s)); ?>)">✏️</button>
-                                <form action="actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да изтриете служителя?')">
+                                <form action="../core/actions/staff_actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да изтриете служителя?')">
                                     <input type="hidden" name="action" value="delete_staff">
                                     <input type="hidden" name="staff_id" value="<?php echo $s['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -294,7 +325,7 @@
                         <td><strong><?php echo htmlspecialchars($d['name']); ?></strong></td>
                         <td>
                             <?php if ($d['head_doctor_id']): ?>
-                                👨‍⚕️ <?php echo htmlspecialchars($d['doc_first'] . ' ' . $d['doc_last']); ?>
+                                <?php echo htmlspecialchars($d['doc_first'] . ' ' . $d['doc_last']); ?>
                             <?php else: ?>
                                 <span style="color:var(--text-muted);">Няма назначен ръководител</span>
                             <?php endif; ?>
@@ -302,7 +333,7 @@
                         <td style="text-align:right;">
                             <div style="display:inline-flex; gap:6px;">
                                 <button class="btn btn-secondary btn-sm" onclick="openEditDept(<?php echo htmlspecialchars(json_encode($d)); ?>)">✏️</button>
-                                <form action="actions.php" method="POST" onsubmit="return confirm('Наистина ли искате да изтриете отделението?')">
+                                <form action="../core/actions/department_actions.php" method="POST" onsubmit="return confirm('Наистина ли искате да изтриете отделението?')">
                                     <input type="hidden" name="action" value="delete_department">
                                     <input type="hidden" name="department_id" value="<?php echo $d['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -357,7 +388,7 @@
                         <td style="text-align:right;">
                             <div style="display:inline-flex; gap:6px;">
                                 <button class="btn btn-secondary btn-sm" onclick="openEditRoom(<?php echo htmlspecialchars(json_encode($r)); ?>)">✏️</button>
-                                <form action="actions.php" method="POST" onsubmit="return confirm('Изтриване на стаята?')">
+                                <form action="../core/actions/room_actions.php" method="POST" onsubmit="return confirm('Изтриване на стаята?')">
                                     <input type="hidden" name="action" value="delete_room">
                                     <input type="hidden" name="room_id" value="<?php echo $r['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -395,17 +426,17 @@
             <tbody>
                 <?php foreach ($data['shifts'] as $s): ?>
                     <tr>
-                        <td><strong>👨‍⚕️ <?php echo htmlspecialchars($s['first_name'] . ' ' . $s['last_name']); ?></strong></td>
+                        <td><strong><?php echo htmlspecialchars($s['first_name'] . ' ' . $s['last_name']); ?></strong></td>
                         <td><?php echo htmlspecialchars($s['dept_name'] ?? 'Обща база'); ?></td>
                         <td><?php echo $s['shift_date']; ?></td>
                         <td>
                             <?php 
-                            $shiftLabels = ['morning' => '🌅 Сутрешна смяна', 'afternoon' => '🌇 Следобедна смяна', 'night' => '🌃 Нощно дежурство'];
+                            $shiftLabels = ['morning' => 'Сутрешна смяна', 'afternoon' => 'Следобедна смяна', 'night' => 'Нощно дежурство'];
                             echo $shiftLabels[$s['shift_type']] ?? $s['shift_type'];
                             ?>
                         </td>
                         <td style="text-align:right;">
-                            <form action="actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да премахнете дежурството от графика?')">
+                            <form action="../core/actions/shift_actions.php" method="POST" onsubmit="return confirm('Наистина ли желаете да премахнете дежурството от графика?')">
                                 <input type="hidden" name="action" value="delete_shift">
                                 <input type="hidden" name="shift_id" value="<?php echo $s['id']; ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
@@ -454,7 +485,7 @@
                         <td style="text-align:right;">
                             <div style="display:inline-flex; gap:6px;">
                                 <button class="btn btn-secondary btn-sm" onclick="openEditUser(<?php echo htmlspecialchars(json_encode($u)); ?>)">✏️</button>
-                                <form action="actions.php" method="POST" onsubmit="return confirm('Сигурни ли сте, че желаете да изтриете потребителя?')">
+                                <form action="../core/actions/user_actions.php" method="POST" onsubmit="return confirm('Сигурни ли сте, че желаете да изтриете потребителя?')">
                                     <input type="hidden" name="action" value="delete_user">
                                     <input type="hidden" name="user_id" value="<?php echo $u['id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm" <?php echo $u['id'] == $userId ? 'disabled' : ''; ?>>🗑️</button>
@@ -481,7 +512,7 @@
         <!-- Болница -->
         <div class="chart-card">
             <h3 class="chart-title">🏢 Детайли на Лечебното Заведение</h3>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/hospital_actions.php" method="POST">
                 <input type="hidden" name="action" value="edit_hospital">
                 <div class="form-group">
                     <label class="form-label">Име на болницата</label>
@@ -498,7 +529,7 @@
         <!-- Директор -->
         <div class="chart-card">
             <h3 class="chart-title">👨‍💼 Данни за Директора на Болницата</h3>
-            <form action="actions.php" method="POST">
+            <form action="../core/actions/director_actions.php" method="POST">
                 <input type="hidden" name="action" value="edit_director">
                 <div class="form-row">
                     <div class="form-group">

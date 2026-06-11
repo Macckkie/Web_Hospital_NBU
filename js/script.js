@@ -1,4 +1,4 @@
-// script.js - Клиентски интерактивни контроли за Web_Hospital_NBU
+// js/script.js - Клиентски интерактивни контроли за Web_Hospital_NBU
 
 document.addEventListener('DOMContentLoaded', function() {
     // -------------------------------------------------------------
