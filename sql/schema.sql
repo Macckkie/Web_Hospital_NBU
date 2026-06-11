@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
     `room_number`   VARCHAR(10) UNIQUE NOT NULL COMMENT 'Уникален номер на стаята',
     `type`          ENUM('regular', 'operating', 'icu') NOT NULL COMMENT 'Тип на стаята (обикновена, операционна, интензивно)',
     `capacity`      INT NOT NULL COMMENT 'Брой легла',
-    `price_per_day` DECIMAL(10,2) NOT NULL DEFAULT 50.00 COMMENT 'Цена на ден в лева'
+    `price_per_day` DECIMAL(10,2) NOT NULL DEFAULT 50.00 COMMENT 'Цена на ден в EUR'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 

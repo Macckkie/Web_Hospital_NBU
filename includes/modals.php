@@ -84,7 +84,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="form-group">
-                        <label class="form-label">Първоначална такса за лечение (лв.)</label>
+                        <label class="form-label">Първоначална такса за лечение (EUR)</label>
                         <input type="number" name="treatment_cost" step="0.01" class="form-control" value="0.00">
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="form-group">
-                        <label class="form-label">Разходи за лечение (лв.)</label>
+                        <label class="form-label">Разходи за лечение (EUR)</label>
                         <input type="number" name="treatment_cost" id="edit_pat_cost" step="0.01" class="form-control">
                     </div>
                 </div>
@@ -352,7 +352,7 @@
                             <input type="number" name="capacity" class="form-control" value="2" min="1" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Цена за ден престой (лв.) *</label>
+                            <label class="form-label">Цена за ден престой (EUR) *</label>
                             <input type="number" name="price_per_day" class="form-control" value="50.00" step="0.01" required>
                         </div>
                     </div>
@@ -394,7 +394,7 @@
                             <input type="number" name="capacity" id="edit_room_cap" class="form-control" min="1" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Цена за ден престой (лв.) *</label>
+                            <label class="form-label">Цена за ден престой (EUR) *</label>
                             <input type="number" name="price_per_day" id="edit_room_price" class="form-control" step="0.01" required>
                         </div>
                     </div>

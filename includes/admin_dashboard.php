@@ -1,4 +1,5 @@
 <?php
+/** @var array $data */
 // includes/admin_dashboard.php - Изгледи, раздели и таблици за Администратор
 ?>
 <!-- Таб: Статистика & Общ преглед -->
@@ -384,7 +385,7 @@
                                 <div style="height:100%; width:<?php echo round(($r['occupied'] / $r['capacity']) * 100); ?>%; background:<?php echo $r['occupied'] == $r['capacity'] ? 'var(--danger)' : 'var(--accent)'; ?>;"></div>
                             </div>
                         </td>
-                        <td><strong><?php echo number_format($r['price_per_day'], 2); ?> лв.</strong></td>
+                        <td><strong><?php echo number_format($r['price_per_day'], 2); ?> EUR</strong></td>
                         <td style="text-align:right;">
                             <div style="display:inline-flex; gap:6px;">
                                 <button class="btn btn-secondary btn-sm" onclick="openEditRoom(<?php echo htmlspecialchars(json_encode($r)); ?>)">✏️</button>

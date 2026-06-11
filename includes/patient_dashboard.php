@@ -1,4 +1,5 @@
 <?php
+/** @var array $data */
 // includes/patient_dashboard.php - Медицински картон, лекуващ лекар и сметка за престой на Пациента
 ?>
 <!-- Таб: Личен Картон -->
@@ -80,18 +81,18 @@
                 <h3 class="chart-title">Сметка за лечение</h3>
                 <div style="background:var(--primary-light); color:var(--primary-dark); padding:20px; border-radius:12px; text-align:center; margin-bottom:20px;">
                     <span style="font-size:13px; font-weight:600; text-transform:uppercase;">Дължима сума</span>
-                    <h2 style="font-size:32px; font-weight:800; font-family:var(--font-heading); margin-top:4px;"><?php echo number_format($totalBill, 2); ?> лв.</h2>
+                    <h2 style="font-size:32px; font-weight:800; font-family:var(--font-heading); margin-top:4px;"><?php echo number_format($totalBill, 2); ?> EUR</h2>
                     <span style="font-size:11px; font-weight:500;">(на база <?php echo $days; ?> дни престой)</span>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:10px; font-size:13px; margin-bottom:24px; border-bottom:1px solid var(--border-color); padding-bottom:16px;">
                     <div style="display:flex; justify-content:space-between;">
-                        <span class="text-muted">Престой в стая (<?php echo $days; ?> дни x <?php echo number_format($p['price_per_day'], 2); ?> лв.)</span>
-                        <strong><?php echo number_format($roomBill, 2); ?> лв.</strong>
+                        <span class="text-muted">Престой в стая (<?php echo $days; ?> дни x <?php echo number_format($p['price_per_day'], 2); ?> EUR)</span>
+                        <strong><?php echo number_format($roomBill, 2); ?> EUR</strong>
                     </div>
                     <div style="display:flex; justify-content:space-between;">
                         <span class="text-muted">Разходи за лечение</span>
-                        <strong><?php echo number_format($p['treatment_cost'], 2); ?> лв.</strong>
+                        <strong><?php echo number_format($p['treatment_cost'], 2); ?> EUR</strong>
                     </div>
                 </div>
 

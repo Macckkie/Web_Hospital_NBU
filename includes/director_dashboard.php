@@ -1,4 +1,5 @@
 <?php
+/** @var array $data */
 // includes/director_dashboard.php - Изгледи и статистически анализи за Директор
 ?>
 <!-- Таб: Директорски Анализ -->
@@ -269,7 +270,7 @@
                                 <div style="height:100%; width:<?php echo round(($r['occupied'] / $r['capacity']) * 100); ?>%; background:var(--primary);"></div>
                             </div>
                         </td>
-                        <td><strong><?php echo number_format($r['price_per_day'], 2); ?> лв.</strong></td>
+                        <td><strong><?php echo number_format($r['price_per_day'], 2); ?> EUR</strong></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
