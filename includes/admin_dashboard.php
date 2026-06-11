@@ -181,7 +181,7 @@
                                         </form>
                                     <?php endif; ?>
                                     
-                                    <a href="bill.php?patient_id=<?php echo $p['id']; ?>" class="btn btn-secondary btn-sm" title="Преглед на сметка" target="_blank">🧾</a>
+                                    <a href="bill.php?patient_id=<?php echo $p['id']; ?>" class="btn btn-secondary btn-sm" title="Преглед на сметка" target="_blank">🧾 Сметка</a>
                                     
                                     <button class="btn btn-secondary btn-sm" onclick="openEditPatient(<?php echo htmlspecialchars(json_encode($p)); ?>)">✏️</button>
                                     

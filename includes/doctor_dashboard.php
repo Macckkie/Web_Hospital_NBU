@@ -89,7 +89,7 @@
                                                 <button type="submit" class="btn btn-accent btn-sm" title="Отбележи като излекуван">✓</button>
                                             </form>
                                         <?php endif; ?>
-                                        <a href="bill.php?patient_id=<?php echo $p['id']; ?>" class="btn btn-secondary btn-sm" title="Сметка за лечение" target="_blank">🧾</a>
+                                        <a href="bill.php?patient_id=<?php echo $p['id']; ?>" class="btn btn-secondary btn-sm" title="Сметка за лечение" target="_blank">🧾 Сметка</a>
                                         <button class="btn btn-secondary btn-sm" onclick="openEditPatient(<?php echo htmlspecialchars(json_encode($p)); ?>)">✏️</button>
                                         <form action="../core/actions/patient_actions.php" method="POST" onsubmit="return confirm('Изтриване на пациента?')">
                                             <input type="hidden" name="action" value="delete_patient">
