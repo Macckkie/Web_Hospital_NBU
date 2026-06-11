@@ -46,6 +46,19 @@ try {
     } else {
         // Базата данни съществува - селектираме я
         $pdo->exec("USE `$dbname`");
+        
+        // FORCIBLY ENSURE activity_logs EXISTS to avoid errors!
+        try {
+            $pdo->exec("CREATE TABLE IF NOT EXISTS `activity_logs` (
+                `id`         INT AUTO_INCREMENT PRIMARY KEY,
+                `user_id`    INT NOT NULL,
+                `action`     VARCHAR(100) NOT NULL,
+                `details`    TEXT DEFAULT NULL,
+                `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+        } catch (Exception $e) { }
+
         // Проверяваме дали таблицата 'users' съществува
         $tableCheck = $pdo->query("SHOW TABLES LIKE 'users'");
         if (!$tableCheck->fetch()) {
